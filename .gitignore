@@ -1,0 +1,14 @@
+# Dependencies (npm install se wapas ban jaati hain)
+node_modules/
+
+# Secrets / passwords
+.env
+
+# Uploaded resumes (personal data - GitHub par mat daalo)
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Logs and system files
+*.log
+.DS_Store
+Thumbs.db

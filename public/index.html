@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login — PortfolioAI</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="auth-page">
+
+    <!-- Left AI Visual Section -->
+    <section class="auth-visual">
+
+        <div class="visual-glow glow-one"></div>
+        <div class="visual-glow glow-two"></div>
+
+        <div class="visual-content">
+
+            <div class="brand">
+                <span class="brand-icon">✦</span>
+                PortfolioAI
+            </div>
+
+            <div class="visual-text">
+
+                <span class="eyebrow">
+                    AI-POWERED CAREER ANALYTICS
+                </span>
+
+                <h1>
+                    Turn your resume into
+                    <span>career intelligence.</span>
+                </h1>
+
+                <p>
+                    Analyze your resume, discover skill gaps,
+                    improve your ATS score and find career paths
+                    that match your professional profile.
+                </p>
+
+            </div>
+
+            <!-- AI Stats -->
+            <div class="visual-stats">
+
+                <div class="visual-stat">
+                    <strong>ATS</strong>
+                    <span>Resume Analysis</span>
+                </div>
+
+                <div class="visual-stat">
+                    <strong>AI</strong>
+                    <span>Career Insights</span>
+                </div>
+
+                <div class="visual-stat">
+                    <strong>24/7</strong>
+                    <span>Career Copilot</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Decorative AI Card -->
+        <div class="ai-preview">
+
+            <div class="preview-top">
+                <span class="status-dot"></span>
+                AI ANALYSIS ENGINE
+                <span class="live">LIVE</span>
+            </div>
+
+            <div class="preview-score">
+
+                <div>
+                    <small>PROFILE SCORE</small>
+                    <strong>84%</strong>
+                </div>
+
+                <div class="mini-bars">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </div>
+
+            <div class="preview-line"></div>
+
+            <div class="preview-tags">
+                <span>Skills</span>
+                <span>ATS</span>
+                <span>Career</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Login Section -->
+    <section class="auth-form-section">
+
+        <div class="login-card">
+
+            <div class="mobile-brand brand">
+                <span class="brand-icon">✦</span>
+                PortfolioAI
+            </div>
+
+            <div class="login-heading">
+
+                <span class="form-eyebrow">
+                    WELCOME BACK
+                </span>
+
+                <h2>Sign in to your account</h2>
+
+                <p>
+                    Continue your journey toward a stronger professional profile.
+                </p>
+
+            </div>
+
+
+            <!-- Login Form -->
+            <form id="loginForm">
+
+                <!-- Email -->
+                <div class="form-group">
+
+                    <label for="email">
+                        Email address
+                    </label>
+
+                    <div class="input-container">
+
+                        <span class="input-icon">✉</span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="form-group">
+
+                    <div class="label-row">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <a href="#" class="forgot-link">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+                    <div class="input-container">
+
+                        <span class="input-icon">⌑</span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="togglePassword"
+                            aria-label="Show password"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Remember -->
+                <div class="remember-row">
+
+                    <label class="checkbox-label">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+
+                        <span>Remember me</span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- Login Button -->
+                <button
+                    type="submit"
+                    class="login-button"
+                    id="loginButton"
+                >
+
+                    <span id="loginButtonText">
+                        Sign in
+                    </span>
+
+                    <span class="button-arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <!-- Message -->
+            <div
+                id="loginMessage"
+                class="auth-message"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- Divider -->
+            <div class="auth-divider">
+                <span>or continue with</span>
+            </div>
+
+
+            <!-- Social Login -->
+            <div class="social-buttons">
+
+                <button
+                    type="button"
+                    class="social-button"
+                    id="googleLogin"
+                >
+                    <span class="google-icon">G</span>
+                    Google
+                </button>
+
+                <button
+                    type="button"
+                    class="social-button"
+                    id="linkedinLogin"
+                >
+                    <span class="linkedin-icon">in</span>
+                    LinkedIn
+                </button>
+
+            </div>
+
+
+            <!-- Register -->
+            <p class="register-text">
+
+                Don't have an account?
+
+                <a href="register.html">
+                    Create an account
+                </a>
+
+            </p>
+
+            <p class="security-note">
+                🔒 Your professional data stays secure.
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script src="/js/script.js"></script>
+
+</body>
+</html>

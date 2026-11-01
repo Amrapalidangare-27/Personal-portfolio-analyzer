@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Personal Portfolio Analyzer</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css?v=2">
+</head>
+
+<body class="dashboard-page">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">P</div>
+            <div>
+                <h2>Portfolio</h2>
+                <span>Analyzer</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#overview" class="nav-item active"><span>⌂</span> Dashboard</a>
+            <a href="#resume" class="nav-item"><span>📄</span> Resume</a>
+            <a href="#skills" class="nav-item"><span>🎯</span> Skill Analysis</a>
+            <a href="#tracker" class="nav-item"><span>📈</span> Skill Tracker</a>
+            <a href="#career" class="nav-item"><span>💼</span> Career</a>
+            <a href="#planner" class="nav-item"><span>📅</span> Learning Planner</a>
+            <a href="#projects" class="nav-item"><span>💡</span> Projects</a>
+            <a href="#interview" class="nav-item"><span>🎤</span> Interview</a>
+            <a href="#assistant" class="nav-item"><span>🤖</span> AI Assistant</a>
+            <a href="#portfolio" class="nav-item"><span>🔗</span> Portfolio</a>
+            <a href="#badges" class="nav-item"><span>🏆</span> Badges</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="#" class="nav-item"><span>⚙️</span> Settings</a>
+            <a href="#" id="logoutBtn" class="nav-item"><span>🚪</span> Logout</a>
+
+            <div class="profile-mini">
+                <div class="profile-avatar">U</div>
+                <div class="profile-info">
+                    <strong>User</strong>
+                    <small>My Profile</small>
+                </div>
+                <span>⋮</span>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content" id="overview">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div>
+                <p class="page-label">OVERVIEW</p>
+                <h1>Welcome back, User 👋</h1>
+                <p class="page-description">
+                    Track your resume strength, skills and career readiness.
+                </p>
+            </div>
+
+            <div class="topbar-actions">
+                <button class="notification-btn">🔔</button>
+                <div class="top-profile">
+                    <div class="top-avatar">U</div>
+                    <span>User</span>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- ================= OVERVIEW CARDS ================= -->
+        <section class="overview-grid">
+
+            <div class="overview-card">
+                <div class="overview-icon purple">📊</div>
+                <div class="overview-content">
+                    <span>ATS Score</span>
+                    <strong id="overviewATS">0%</strong>
+                    <small>Resume compatibility</small>
+                </div>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon blue">🎯</div>
+                <div class="overview-content">
+                    <span>Skill Match</span>
+                    <strong id="overviewSkillMatch">0%</strong>
+                    <small>Career skill alignment</small>
+                </div>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon green">📈</div>
+                <div class="overview-content">
+                    <span>Resume Strength</span>
+                    <strong id="overviewResumeStrength">0%</strong>
+                    <small>Overall profile quality</small>
+                </div>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon orange">🚀</div>
+                <div class="overview-content">
+                    <span>Career Readiness</span>
+                    <strong id="overviewCareerReadiness">0%</strong>
+                    <small>Based on your profile</small>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= RESUME SECTION ================= -->
+        <section class="dashboard-grid" id="resume">
+
+            <!-- RESUME UPLOAD -->
+            <div class="dashboard-card upload-card">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-tag">RESUME</span>
+                        <h2>Upload your resume</h2>
+                        <p>Upload your latest resume to analyze your professional profile.</p>
+                    </div>
+                    <div class="heading-icon">📄</div>
+                </div>
+
+                <div class="upload-box">
+                    <div class="upload-icon">↑</div>
+                    <h3>Drop your resume here</h3>
+                    <p>PDF, DOC or DOCX • Maximum 5 MB</p>
+
+                    <label for="resumeFile" class="choose-file-btn">Choose Resume</label>
+
+                    <input type="file" id="resumeFile" accept=".pdf,.doc,.docx">
+
+                    <button type="button" class="primary-btn upload-btn" onclick="uploadResume()">
+                        Analyze Resume
+                    </button>
+
+                    <p id="uploadStatus"></p>
+                </div>
+
+            </div>
+
+            <!-- ATS SCORE -->
+            <div class="dashboard-card ats-card">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-tag">ANALYSIS</span>
+                        <h2>ATS Score</h2>
+                        <p>How well your resume matches ATS requirements.</p>
+                    </div>
+                    <div class="heading-icon">📊</div>
+                </div>
+
+                <div class="ats-chart-container">
+                    <canvas id="atsChart"></canvas>
+                    <div class="ats-center-text">
+                        <span id="atsPercentage">0%</span>
+                        <small>ATS Score</small>
+                    </div>
+                </div>
+
+                <p class="ats-status">Upload a resume to calculate your score.</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RESUME DETAILS ================= -->
+        <section class="dashboard-card resume-details-card">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-tag">FILE DETAILS</span>
+                    <h2>Resume Information</h2>
+                </div>
+                <div class="heading-icon">📋</div>
+            </div>
+
+            <div class="file-details-grid">
+                <div class="file-detail">
+                    <span>File Name</span>
+                    <strong id="fileName">---</strong>
+                </div>
+                <div class="file-detail">
+                    <span>File Type</span>
+                    <strong id="fileType">---</strong>
+                </div>
+                <div class="file-detail">
+                    <span>File Size</span>
+                    <strong id="fileSize">---</strong>
+                </div>
+                <div class="file-detail">
+                    <span>Upload Time</span>
+                    <strong id="uploadTime">---</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Hidden fields used by JavaScript (do not remove) -->
+        <p style="display:none;">
+            Score: <b id="atsScore">Upload resume to calculate</b>
+        </p>
+        <div id="atsDetails" style="display:none;"></div>
+
+
+        <!-- ================= RESUME IMPROVEMENT ================= -->
+        <section class="dashboard-card suggestions-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-tag">IMPROVEMENT</span>
+                    <h2>Resume Improvement</h2>
+                    <p>Personalized suggestions to improve your ATS score.</p>
+                </div>
+                <div class="heading-icon">💡</div>
+            </div>
+
+            <div id="atsSuggestions" class="suggestions-container">
+                <div class="suggestion-placeholder">
+                    <span>📄</span>
+                    <p>Upload your resume to get personalized suggestions.</p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= SKILL GAP ================= -->
+        <section class="dashboard-card skill-gap-section" id="skills">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-tag">SKILLS</span>
+                    <h2>Skill Gap Analysis</h2>
+                    <p>Discover your current skills and identify what you need to learn next.</p>
+                </div>
+                <div class="heading-icon">🎯</div>
+            </div>
+
+            <!-- CAREER + MATCH -->
+            <div class="skill-summary-grid">
+
+                <div class="career-result-card">
+                    <span>RECOMMENDED CAREER</span>
+                    <h3 id="recommendedRole">Upload your resume</h3>
+                    <p>Your recommended career will appear here after analysis.</p>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-top">
+                        <div>
+                            <span>ROLE MATCH</span>
+                            <h3 id="roleMatchPercentage">0%</h3>
+                        </div>
+                        <div class="match-circle">🎯</div>
+                    </div>
+
+                    <div class="match-progress">
+                        <div id="roleMatchBar" class="match-progress-fill"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SKILLS -->
+            <div class="skills-grid">
+
+                <div class="skills-card">
+                    <div class="skills-title">
+                        <span class="success-dot">✓</span>
+                        <h3>Skills You Have</h3>
+                    </div>
+                    <div id="matchedSkills">
+                        <p>Upload your resume to detect skills.</p>
+                    </div>
+                </div>
+
+                <div class="skills-card missing">
+                    <div class="skills-title">
+                        <span class="warning-dot">!</span>
+                        <h3>Skills to Improve</h3>
+                    </div>
+                    <div id="missingSkills">
+                        <p>Upload your resume to identify missing skills.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- GAP + CAREER -->
+            <div class="skill-bottom-grid">
+
+                <div class="gap-result-card">
+                    <span>SKILL GAP</span>
+                    <strong id="skillGapPercentage">0%</strong>
+                    <p>Skills that may need improvement for your recommended career.</p>
+                </div>
+
+                <div class="career-suggestions-card" id="career">
+                    <div class="skills-title">
+                        <span class="success-dot">💼</span>
+                        <h3>Career Suggestions</h3>
+                    </div>
+                    <div id="careerSuggestions">
+                        <p>Upload your resume to get career suggestions.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SKILL PROGRESS TRACKER ================= -->
+        <section class="dashboard-card skill-progress-section" id="tracker">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-tag">PROGRESS</span>
+                    <h2>Skill Progress Tracker</h2>
+                    <p>Track your current skills and improve them for your target career.</p>
+                </div>
+                <div class="heading-icon">📈</div>
+            </div>
+
+            <div id="skillProgressContainer" class="skill-progress-container">
+                <p class="skill-loading">Loading your skills...</p>
+            </div>
+
+        </section>
+
+
+        <!-- ================= AI ASSISTANT ================= -->
+        <section class="dashboard-card chatbot-section" id="assistant">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-tag">AI ASSISTANT</span>
+                    <h2>AI Career Assistant</h2>
+                    <p>Ask questions about your resume, skills, career or interviews.</p>
+                </div>
+                <div class="ai-badge">✨ AI</div>
+            </div>
+
+            <div class="chatbot-box">
+
+                <div class="ai-message">
+                    <div class="ai-avatar">✨</div>
+                    <div>
+                        <strong>Career Assistant</strong>
+                        <p>Hi! How can I help you with your career today?</p>
+                    </div>
+                </div>
+
+                <div class="chat-input-row">
+                    <input
+                        type="text"
+                        id="question"
+                        placeholder="Ask about your career, skills, resume..."
+                    >
+                    <button type="button" class="primary-btn" onclick="chatbot()">
+                        Ask AI →
+                    </button>
+                </div>
+
+                <div id="answer" class="chat-answer"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= DAILY LEARNING PLANNER ================= -->
+        <section class="dashboard-card planner-section" id="planner">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-tag">LEARNING</span>
+                    <h2>Daily Learning Planner</h2>
+                    <p>Choose a target career and get a day-by-day plan for your missing skills.</p>
+                </div>
+                <div class="heading-icon">📅</div>
+            </div>
+
+            <div class="pl-controls">
+                <select id="plannerRole"></select>
+                <button type="button" class="primary-btn" id="plannerGenerate">⚡ Generate Plan</button>
+                <button type="button" class="secondary-btn" id="plannerReset">Reset</button>
+            </div>
+
+            <div id="plannerMissing" class="pl-missing"></div>
+            <div id="plannerProgress" class="pl-progress"></div>
+            <div id="plannerList" class="pl-list"></div>
+
+        </section>
+
+
+        <!-- ================= PROJECT RECOMMENDATIONS ================= -->
+        <section class="dashboard-card projects-section" id="projects">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-tag">PROJECTS</span>
+                    <h2>Project Recommendations</h2>
+                    <p>Project ideas based on your skills, missing skills and recommended career.</p>
+                </div>
+                <div class="heading-icon">💡</div>
+            </div>
+
+            <button type="button" class="primary-btn" id="projectGenerate">💡 Get Project Ideas</button>
+
+            <div id="projectList" class="pj-grid"></div>
+
+        </section>
+
+
+        <!-- ================= PORTFOLIO SHARING ================= -->
+        <section class="feature-card portfolio-share-section" id="portfolio">
+
+            <div class="section-header">
+                <div>
+                    <h2>🌐 Share Your Portfolio</h2>
+                    <p>
+                        Create a public portfolio link and share it with
+                        recruiters, teachers or friends.
+                    </p>
+                </div>
+            </div>
+
+            <div class="portfolio-share-content">
+
+                <div class="share-info">
+                    <h3>Make your portfolio public</h3>
+
+                    <p>
+                        Your portfolio will include your name,
+                        career role, ATS score and detected skills.
+                    </p>
+
+                    <button type="button" class="primary-btn" onclick="sharePortfolio()">
+                        🔗 Share Portfolio
+                    </button>
+                </div>
+
+                <div id="portfolioLinkBox" class="portfolio-link-box" style="display: none;">
+
+                    <h3>✅ Portfolio Created!</h3>
+                    <p>Your shareable portfolio link:</p>
+
+                    <div class="share-link-row">
+                        <input type="text" id="portfolioShareLink" readonly>
+
+                        <button type="button" class="secondary-btn" onclick="copyPortfolioLink()">
+                            Copy
+                        </button>
+                    </div>
+
+                    <a id="portfolioOpenLink" href="#" target="_blank" class="open-portfolio-link">
+                        👁️ View Portfolio
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= INTERVIEW PREPARATION ================= -->
+        <section class="feature-card interview-section" id="interview">
+
+            <div class="section-header">
+                <div>
+                    <h2>🎤 Interview Preparation</h2>
+                    <p>Prepare for your interview with role-based questions.</p>
+                </div>
+            </div>
+
+            <div class="interview-main-card">
+
+                <div class="interview-icon">🎯</div>
+
+                <div class="interview-info">
+                    <h3>Practice for Your Target Role</h3>
+                    <p id="selectedRoleText">
+                        Select a career role to generate interview questions.
+                    </p>
+                </div>
+
+                <button type="button" class="primary-btn" onclick="openInterviewModal()">
+                    🎯 Select Role
+                </button>
+
+            </div>
+
+            <div id="interviewQuestionsBox" class="interview-questions-box">
+                <h3>📋 Interview Questions</h3>
+                <p id="interviewMessage">Your generated questions will appear here.</p>
+                <div id="questionsList"></div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= INTERVIEW ROLE MODAL ================= -->
+        <div id="interviewModal" class="interview-modal">
+
+            <div class="interview-modal-content">
+
+                <button type="button" class="close-modal" onclick="closeInterviewModal()">×</button>
+
+                <div class="modal-icon">🎤</div>
+
+                <h2>Select Your Target Role</h2>
+                <p>Choose the role you want to prepare for.</p>
+
+                <select id="targetRole">
+                    <option value="">Select a role</option>
+                    <option value="Frontend Developer">Frontend Developer</option>
+                    <option value="Backend Developer">Backend Developer</option>
+                    <option value="Python Developer">Python Developer</option>
+                    <option value="Data Analyst">Data Analyst</option>
+                    <option value="Software Developer">Software Developer</option>
+                    <option value="General Interview">General Interview</option>
+                </select>
+
+                <button type="button" class="primary-btn modal-generate-btn" onclick="generateInterviewQuestions()">
+                    🚀 Generate Questions
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= PORTFOLIO BADGES ================= -->
+        <section class="dashboard-card badges-section" id="badges">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-tag">ACHIEVEMENTS</span>
+                    <h2>Portfolio Badges</h2>
+                    <p>Earn badges as your resume and skills improve. Earned badges appear on your shared portfolio.</p>
+                </div>
+                <div class="heading-icon">🏆</div>
+            </div>
+
+            <div id="badgeSummary" class="bd-top"></div>
+            <div id="badgeGrid" class="bd-grid"></div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+        <footer class="dashboard-footer">
+            <strong>Personal Portfolio Analyzer</strong>
+            <span>Build your skills. Improve your resume. Grow your career.</span>
+        </footer>
+
+    </main>
+
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/dashboard.js?v=3001"></script>
+    <script src="/js/skillTracker.js?v=2"></script>
+    <script src="/js/features.js?v=1"></script>
+    <script src="/js/badges.js?v=1"></script>
+
+</body>
+
+</html>
